@@ -1,5 +1,5 @@
 {
-    "name": "{{repoName}}",
+    "name": "ng-deezer-sdk",
     "devDependencies": {
         "karma": "0.12.*",
         "karma-cli": "*",
