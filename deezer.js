@@ -22,22 +22,19 @@ angular.module("gianarb.deezer", [])
         var getLoginStatus = function(logged, unlogged){
                 DZ.getLoginStatus(function(response){
                     if (response.authResponse != null) {
-                        logged();
+                        logged(response);
                     }
                     else {
-                        unlogged();
+                        unlogged(response);
                     }
                 });
         }; 
         
-        var login = function(){
+        var login = function(callback){
                 DZ.login(function(response){
                     DZ.getLoginStatus(function(response) {
                         if (response.authResponse != null) {
-                            $rootScope.user_data = {
-                                "access_token"  : response.authResponse.accessToken,
-                                "user_id"       : response.userID
-                            }; 
+                            callback(response);
                         }
                     });
                 }, {perms: 'basic_access,email'});

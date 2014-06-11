@@ -10,4 +10,44 @@
     }
 }
 ```
-### I'm working for you!
+
+### First integration step
+``` html
+<script src="incude/script/deezer.js"></script>
+<script src="//cdn-files.deezer.com/js/min/dz.js"></script>
+```
+Include my module and deezer official sdk
+
+### My bootstrap example
+``` javascript
+angular.module( 'ngBoilerplate', [
+  'gianarb.deezer'
+])
+.config(function myAppConfig ($deezerProvider) {
+    // Init provider configuration
+    $deezerProvider.setChannelUrl("http://yourchannel.url");
+    $deezerProvider.setAppId("xxxxxx");
+})
+.run(['DeezerFactory', '$rootScope', function run (DeezerFactory, $rootScope) {
+    //Check if I'm already logged
+    if(!$rootScope.user_data){    
+        DeezerFactory.login(function(response){
+            $rootScope.user_data = {                                                                                                                                                                                                                                                               
+                "access_token"  : response.authResponse.accessToken,                                                                                                                                                                                                                               
+                "user_id"       : response.userID                                                                                                                                                                                                                                                  
+            };    
+        });
+    }
+}])
+```
+
+### I'm me!
+``` javascript
+.controller( 'HomeCtrl', ['$scope', 'DeezerFactory', function HomeController( $scope, DeezerFactory ) {
+    DeezerFactory.api('/user/me', function(me){
+        $scope.me = me;
+        console.log("LOG ", me);
+    });
+}]);
+
+```
