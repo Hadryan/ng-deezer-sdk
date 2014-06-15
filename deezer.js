@@ -29,7 +29,11 @@ angular.module("gianarb.deezer", [])
                     }
                 });
         }; 
-        
+
+        var initPlayer = function(obj){
+            DZ.init(obj);
+        };
+
         var login = function(callback){
                 DZ.login(function(response){
                     DZ.getLoginStatus(function(response) {
@@ -54,6 +58,7 @@ angular.module("gianarb.deezer", [])
         return {
             login: login,
             logout: logout,
+            initPlayer: initPlayer,
             getLoginStatus: getLoginStatus,
             api: api
         };
