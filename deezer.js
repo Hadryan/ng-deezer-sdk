@@ -17,9 +17,12 @@ angular.module("gianarb.deezer", [])
             });
         }];
     })
-    .factory("DeezerFactory", ['$deezer', '$http', "$location", '$rootScope', 
-        function($deezer, $http, $location, $rootScope){
-        var getLoginStatus = function(logged, unlogged){
+    .factory("deezer", ['$deezer', '$http', "$location", '$rootScope', '$q', 
+        function($deezer, $http, $location, $rootScope, $q){
+       
+        var def = $q.defer();
+
+        var getLoginStatus = function(){
                 DZ.getLoginStatus(function(response){
                     if (response.authResponse != null) {
                         logged(response);
@@ -49,10 +52,11 @@ angular.module("gianarb.deezer", [])
             DZ.logout(callback);
         };
 
-        var api = function(url, success){
+        var api = function(url){
             DZ.api(url, function(response){
-                success(response);
+                def.resolve(response)
             });
+            return def.promise;
         };
 
         return {

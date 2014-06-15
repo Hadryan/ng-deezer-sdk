@@ -43,10 +43,9 @@ angular.module( 'ngBoilerplate', [
 
 ### I'm me!
 ``` javascript
-.controller( 'HomeCtrl', ['$scope', 'DeezerFactory', function HomeController( $scope, DeezerFactory ) {
-    DeezerFactory.api('/user/me', function(me){
-        $scope.me = me;
-        console.log("LOG ", me);
+.controller( 'HomeCtrl', ['$scope', 'deezer', function HomeController( $scope, deezer ) {
+    deezer.api('album/7723488').then(function(resp){
+        $scope.album = resp;
     });
 }]);
 

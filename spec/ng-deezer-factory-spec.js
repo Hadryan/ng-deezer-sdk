@@ -6,8 +6,8 @@ describe("deezer factory", function() {
 
     var _deezerFactory;
 
-    beforeEach(inject(function(DeezerFactory) {
-        _deezerFactory = DeezerFactory;
+    beforeEach(inject(function(deezer) {
+        _deezerFactory = deezer;
     }));
 
     it('shoud call init', function() {
