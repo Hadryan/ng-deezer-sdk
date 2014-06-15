@@ -298,10 +298,10 @@ angular.module("home/home.tpl.html", []).run(["$templateCache", function($templa
     "        \n" +
     "    </div>    \n" +
     "    <div class=\"col-md-2\">\n" +
-    "        <img src=\"/assets/deezer.jpeg\" class=\"img-responsive\" />\n" +
+    "        <img src=\"assets/deezer.jpeg\" class=\"img-responsive\" />\n" +
     "    </div>\n" +
     "     <div class=\"col-md-2 angular-logo\">\n" +
-    "        <img src=\"/assets/angular.jpeg\" class=\"img-responsive\" />\n" +
+    "        <img src=\"assets/angular.jpeg\" class=\"img-responsive\" />\n" +
     "    </div>\n" +
     "\n" +
     "    <div class=\"col-md-4\">\n" +
