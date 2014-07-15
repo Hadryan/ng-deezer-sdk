@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html ng-app="ngBoilerplate" ng-controller="AppCtrl">
   <head>
-    <title ng-bind="pageTitle"></title>
-
+    <title>AngularJs and Deezer integration</title>
+    <meta charset="utf-8">
     <script src="//cdn-files.deezer.com/js/min/dz.js"></script>
+    <!-- google metatag -->
+    <meta name="description" content="AngularJs and Deezer SDK integrations.. Javascript developers" />
+    
     <!-- social media tags -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@gianarb">
@@ -40,7 +43,7 @@
   <body>
       <div id="dz-root"></div>
             <div class="board">
-                <div  class="board-inner"> </div>
+                <div  class="board-inner"></div>
             </div>
 
       <div class="container" ui-view="main"></div>
