@@ -1,6 +1,13 @@
 angular.module("gianarb.deezer", [])
     .provider("$deezer", function(){
+        /**
+         * Application id form developers.deezer.com
+         */
         var appID;
+        
+        /**
+         * Channel url
+         */
         var channelUrl;
 
         this.setAppId = function(str){
@@ -10,6 +17,9 @@ angular.module("gianarb.deezer", [])
             channelUrl = url;
         };
 
+        /**
+         *  Init deezer sdk
+         */
         this.$get = [function(){
             DZ.init({
                 appId       : appID,
@@ -20,8 +30,14 @@ angular.module("gianarb.deezer", [])
     .factory("deezer", ['$deezer', '$http', "$location", '$rootScope', '$q', 
         function($deezer, $http, $location, $rootScope, $q){
        
+        /**
+         *  Init promise
+         */
         var def = $q.defer();
 
+        /**
+         * Check login status wrap of DZ.getLoginStatus
+         */
         var getLoginStatus = function(){
                 DZ.getLoginStatus(function(response){
                     if (response.authResponse != null) {
@@ -33,10 +49,17 @@ angular.module("gianarb.deezer", [])
                 });
         }; 
 
+        /**
+         *  Init player
+         */
         var initPlayer = function(obj){
             DZ.init(obj);
         };
 
+        /**
+         * Login into application
+         * @var callback function
+         */
         var login = function(callback){
                 DZ.login(function(response){
                     DZ.getLoginStatus(function(response) {
@@ -48,10 +71,18 @@ angular.module("gianarb.deezer", [])
         
         };
 
+        /**
+         * Wrap of DZ.logout
+         */
         var logout = function(callback){
             DZ.logout(callback);
         };
 
+        /**
+         * Wrap to DZ.api
+         * @var url string
+         * @return promise
+         */
         var api = function(url){
             DZ.api(url, function(response){
                 def.resolve(response)
